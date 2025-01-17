@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RenziJerish's Blog</title>
+    <script>
+        function toggleLanguage() {
+            const elements = document.querySelectorAll('[data-en], [data-zh]');
+            elements.forEach(element => {
+                const enText = element.getAttribute('data-en');
+                const zhText = element.getAttribute('data-zh');
+                if (element.innerText === enText) {
+                    element.innerText = zhText;
+                } else {
+                    element.innerText = enText;
+                }
+            });
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .main-content {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+        }
+        .main-content h1 {
+            text-align: center;
+            color: #333;
+        }
+        .main-content p {
+            line-height: 1.6;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>自我介绍</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">主页</a></li>
+                    <li><a href="#">关于我</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <h1>关于我</h1>
+            <p>你好，我是[你的名字]。目前，我在[你的学校或公司]担任[你的职位]。我的研究领域包括[你的研究领域]，并且在这些领域取得了一些重要的成果。</p>
+            <h2>学术成果</h2>
+            <p>我已经发表了多篇论文，包括：</p>
+            <ul>
+                <li>[论文标题1] - [发表年份]</li>
+                <li>[论文标题2] - [发表年份]</li>
+                <li>[论文标题3] - [发表年份]</li>
+            </ul>
+            <h2>工程成果</h2>
+            <p>在工程方面，我参与了多个项目，包括：</p>
+            <ul>
+                <li>[项目名称1] - [项目描述]</li>
+                <li>[项目名称2] - [项目描述]</li>
+                <li>[项目名称3] - [项目描述]</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>版权所有 &copy; 2023 [你的名字]</p>
+    </footer>
+</body>
+</html>
