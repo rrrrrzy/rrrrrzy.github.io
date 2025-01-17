@@ -70,45 +70,52 @@
             padding: 10px 0;
             margin-top: 20px;
         }
+        .language-toggle {
+            text-align: right;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>自我介绍</h1>
+            <h1 data-en="Introduction" data-zh="自我介绍">自我介绍</h1>
             <nav>
                 <ul>
-                    <li><a href="#">主页</a></li>
-                    <li><a href="#">关于我</a></li>
-                    <li><a href="#">联系</a></li>
+                    <li><a href="#" data-en="Home" data-zh="主页">主页</a></li>
+                    <li><a href="#" data-en="About Me" data-zh="关于我">关于我</a></li>
+                    <li><a href="#" data-en="Contact" data-zh="联系">联系</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <div class="container">
+        <div class="language-toggle">
+            <button onclick="toggleLanguage()">切换语言</button>
+        </div>
         <div class="main-content">
-            <h1>关于我</h1>
-            <p>你好，我是RenziJerish。目前，我在Northwestern Polytechnical University。我的研究领域包括 Computer Science，并且在这些领域取得了一些成果。</p>
-            <h2>学术成果</h2>
-            <p>我已经发表了多篇论文，包括：</p>
+            <h1 data-en="About Me" data-zh="关于我">关于我</h1>
+            <p data-en="Hello, I am RenziJerish. Currently, I am at Northwestern Polytechnical University. My research areas include Computer Science, and I have achieved some results in these fields." data-zh="你好，我是RenziJerish。目前，我在Northwestern Polytechnical University。我的研究领域包括 Computer Science，并且在这些领域取得了一些成果。">你好，我是RenziJerish。目前，我在Northwestern Polytechnical University。我的研究领域包括 Computer Science，并且在这些领域取得了一些成果。</p>
+            <h2 data-en="Academic Achievements" data-zh="学术成果">学术成果</h2>
+            <p data-en="I have published several papers, including:" data-zh="我已经发表了多篇论文，包括：">我已经发表了多篇论文，包括：</p>
             <ul>
-                <li>[论文标题1] - [发表年份]</li>
-                <li>[论文标题2] - [发表年份]</li>
-                <li>[论文标题3] - [发表年份]</li>
+                <li data-en="[Paper Title 1] - [Year]" data-zh="[论文标题1] - [发表年份]">[论文标题1] - [发表年份]</li>
+                <li data-en="[Paper Title 2] - [Year]" data-zh="[论文标题2] - [发表年份]">[论文标题2] - [发表年份]</li>
+                <li data-en="[Paper Title 3] - [Year]" data-zh="[论文标题3] - [发表年份]">[论文标题3] - [发表年份]</li>
             </ul>
-            <h2>工程成果</h2>
-            <p>在工程方面，我参与了多个项目，包括：</p>
+            <h2 data-en="Engineering Achievements" data-zh="工程成果">工程成果</h2>
+            <p data-en="In terms of engineering, I have participated in multiple projects, including:" data-zh="在工程方面，我参与了多个项目，包括：">在工程方面，我参与了多个项目，包括：</p>
             <ul>
-                <li>[项目名称1] - [项目描述]</li>
-                <li>[项目名称2] - [项目描述]</li>
-                <li>[项目名称3] - [项目描述]</li>
+                <li data-en="[Project Name 1] - [Project Description]" data-zh="[项目名称1] - [项目描述]">[项目名称1] - [项目描述]</li>
+                <li data-en="[Project Name 2] - [Project Description]" data-zh="[项目名称2] - [项目描述]">[项目名称2] - [项目描述]</li>
+                <li data-en="[Project Name 3] - [Project Description]" data-zh="[项目名称3] - [项目描述]">[项目名称3] - [项目描述]</li>
             </ul>
         </div>
     </div>
 
     <footer>
-        <p>版权所有 &copy; 2023 RenziJerish</p>
+        <p data-en="Copyright &copy; 2023 RenziJerish" data-zh="版权所有 &copy; 2023 RenziJerish">版权所有 &copy; 2023 RenziJerish</p>
     </footer>
 </body>
 </html>
