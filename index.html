@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RenziJerish's Blog</title>
+    <title>RenziJerish - Academic Profile</title>
+    <meta name="description" content="RenziJerish's Academic Portfolio - Computer Science Research">
     <script>
         function toggleLanguage() {
             const elements = document.querySelectorAll('[data-en], [data-zh]');
@@ -19,103 +20,324 @@
         }
     </script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+        
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+        
         header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #77aaff 3px solid;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 40px 0 20px;
+            margin-bottom: 40px;
         }
-        header a {
-            color: #fff;
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        .name {
+            font-size: 2.2em;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .title {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+        
+        .contact-info a {
+            color: #3498db;
             text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
         }
-        header ul {
-            padding: 0;
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        nav {
+            margin-top: 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .language-toggle button {
+            background: none;
+            border: 1px solid #bdc3c7;
+            padding: 8px 15px;
+            font-size: 0.8em;
+            color: #7f8c8d;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        
+        .language-toggle button:hover {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .main-content {
+            background: #fff;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 400;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.3em;
+            color: #34495e;
+            margin: 30px 0 15px;
+            font-weight: 400;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul {
+            padding-left: 0;
             list-style: none;
         }
-        header li {
-            display: inline;
-            padding: 0 20px 0 20px;
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
         }
-        .main-content {
-            padding: 20px;
-            background: #fff;
-            margin-top: 20px;
+        
+        li:before {
+            content: '•';
+            color: #3498db;
+            position: absolute;
+            left: 0;
         }
-        .main-content h1 {
-            text-align: center;
-            color: #333;
+        
+        .paper-item, .project-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #3498db;
         }
-        .main-content p {
-            line-height: 1.6;
+        
+        .paper-title, .project-title {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 5px;
         }
+        
+        .paper-venue, .project-desc {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        
         footer {
-            background: #333;
-            color: #fff;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+            padding: 30px 0;
+            color: #95a5a6;
+            font-size: 0.9em;
+            border-top: 1px solid #ecf0f1;
+            background: #fff;
         }
-        .language-toggle {
-            text-align: right;
-            padding: 10px;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .main-content {
+                padding: 25px;
+            }
+            
+            .name {
+                font-size: 1.8em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .language-toggle {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="language-toggle">
+        <button onclick="toggleLanguage()" data-en="中文" data-zh="English">English</button>
+    </div>
+    
     <header>
         <div class="container">
-            <h1 data-en="Introduction" data-zh="自我介绍">自我介绍</h1>
-            <nav>
-                <ul>
-                    <li><a href="#" data-en="Home" data-zh="主页">主页</a></li>
-                    <li><a href="#" data-en="About Me" data-zh="关于我">关于我</a></li>
-                    <li><a href="#" data-en="Contact" data-zh="联系">联系</a></li>
-                </ul>
-            </nav>
+            <div class="header-content">
+                <h1 class="name">Zhiyuan Ren</h1>
+                <p class="title" data-en="Computer Science Researcher" data-zh="计算机科学研究者">计算机科学研究者</p>
+                <p class="title" data-en="Northwestern Polytechnical University" data-zh="西北工业大学">西北工业大学</p>
+                <div class="contact-info">
+                    <span data-en="Email: " data-zh="邮箱：">邮箱：</span><a href="renzhiyuan@mail.nwpu.edu.cn">renzhiyuan@mail.nwpu.edu.cn</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about" data-en="About" data-zh="关于">关于</a></li>
+                        <li><a href="#research" data-en="Research" data-zh="研究">研究</a></li>
+                        <li><a href="#publications" data-en="Publications" data-zh="论文">论文</a></li>
+                        <li><a href="#projects" data-en="Projects" data-zh="项目">项目</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <div class="language-toggle">
-            <button onclick="toggleLanguage()">切换语言</button>
-        </div>
         <div class="main-content">
-            <h1 data-en="About Me" data-zh="关于我">关于我</h1>
-            <p data-en="Hello, I am RenziJerish. Currently, I am at Northwestern Polytechnical University. My research areas include Computer Science, and I have achieved some results in these fields." data-zh="你好，我是RenziJerish。目前，我在Northwestern Polytechnical University。我的研究领域包括 Computer Science，并且在这些领域取得了一些成果。">你好，我是RenziJerish。目前，我在Northwestern Polytechnical University。我的研究领域包括 Computer Science，并且在这些领域取得了一些成果。</p>
-            <h2 data-en="Academic Achievements" data-zh="学术成果">学术成果</h2>
-            <p data-en="I have published several papers, including:" data-zh="我已经发表了多篇论文，包括：">我已经发表了多篇论文，包括：</p>
-            <ul>
-                <li data-en="[Paper Title 1] - [Year]" data-zh="[论文标题1] - [发表年份]">[论文标题1] - [发表年份]</li>
-                <li data-en="[Paper Title 2] - [Year]" data-zh="[论文标题2] - [发表年份]">[论文标题2] - [发表年份]</li>
-                <li data-en="[Paper Title 3] - [Year]" data-zh="[论文标题3] - [发表年份]">[论文标题3] - [发表年份]</li>
-            </ul>
-            <h2 data-en="Engineering Achievements" data-zh="工程成果">工程成果</h2>
-            <p data-en="In terms of engineering, I have participated in multiple projects, including:" data-zh="在工程方面，我参与了多个项目，包括：">在工程方面，我参与了多个项目，包括：</p>
-            <ul>
-                <li data-en="[Project Name 1] - [Project Description]" data-zh="[项目名称1] - [项目描述]">[项目名称1] - [项目描述]</li>
-                <li data-en="[Project Name 2] - [Project Description]" data-zh="[项目名称2] - [项目描述]">[项目名称2] - [项目描述]</li>
-                <li data-en="[Project Name 3] - [Project Description]" data-zh="[项目名称3] - [项目描述]">[项目名称3] - [项目描述]</li>
-            </ul>
+            <section id="about" class="section">
+                <h1 data-en="About Me" data-zh="关于我">关于我</h1>
+                <p data-en="I am an undergrad student in Computer Science at Northwestern Polytechnical University. My research interests focus on artificial intelligence, machine learning, and software engineering. I am passionate about developing innovative solutions to complex computational problems and contributing to the advancement of computer science." 
+                   data-zh="我是西北工业大学计算机科学专业的研究者。我的研究兴趣集中在人工智能、机器学习和软件工程领域。我致力于为复杂的计算问题开发创新解决方案，并为计算机科学的发展做出贡献。">
+                   我是西北工业大学计算机科学专业的本科生。我的研究兴趣集中在人工智能、机器学习和软件工程领域。我致力于为复杂的计算问题开发创新解决方案，并为计算机科学的发展做出贡献。
+                </p>
+            </section>
+            
+            <section id="research" class="section">
+                <h1 data-en="Research Interests" data-zh="研究方向">研究方向</h1>
+                <ul>
+                    <li data-en="Artificial Intelligence and Machine Learning" data-zh="人工智能与机器学习">人工智能与机器学习</li>
+                    <li data-en="Deep Learning and Neural Networks" data-zh="深度学习与神经网络">深度学习与神经网络</li>
+                    <!-- <li data-en="Computer Vision and Image Processing" data-zh="计算机视觉与图像处理">计算机视觉与图像处理</li>
+                    <li data-en="Natural Language Processing" data-zh="自然语言处理">自然语言处理</li> -->
+                    <li data-en="Software Engineering and System Design" data-zh="软件工程与系统设计">软件工程与系统设计</li>
+                </ul>
+            </section>
+            
+            <section id="publications" class="section">
+                <h1 data-en="Publications" data-zh="学术论文">学术论文</h1>
+                <p data-en="No public paper temperarily..." data-zh="暂无学术论文发表">暂无学术论文发表</p>
+                <!-- <div class="paper-item">
+                    <div class="paper-title" data-en="[Paper Title 1]: Advanced Machine Learning Approaches for Computer Vision" 
+                         data-zh="[论文标题1]：计算机视觉中的高级机器学习方法">[论文标题1]：计算机视觉中的高级机器学习方法</div>
+                    <div class="paper-venue" data-en="International Conference on Computer Science, 2024" 
+                         data-zh="国际计算机科学会议，2024年">国际计算机科学会议，2024年</div>
+                </div>
+                
+                <div class="paper-item">
+                    <div class="paper-title" data-en="[Paper Title 2]: Deep Learning Architectures for Natural Language Understanding" 
+                         data-zh="[论文标题2]：自然语言理解的深度学习架构">[论文标题2]：自然语言理解的深度学习架构</div>
+                    <div class="paper-venue" data-en="Journal of Artificial Intelligence Research, 2023" 
+                         data-zh="人工智能研究期刊，2023年">人工智能研究期刊，2023年</div>
+                </div>
+                
+                <div class="paper-item">
+                    <div class="paper-title" data-en="[Paper Title 3]: Scalable Software Systems for Large-Scale Data Processing" 
+                         data-zh="[论文标题3]：大规模数据处理的可扩展软件系统">[论文标题3]：大规模数据处理的可扩展软件系统</div>
+                    <div class="paper-venue" data-en="IEEE Transactions on Software Engineering, 2023" 
+                         data-zh="IEEE软件工程汇刊，2023年">IEEE软件工程汇刊，2023年</div>
+                </div> -->
+            </section>
+            
+            <section id="projects" class="section">
+                <h1 data-en="Selected Projects" data-zh="精选项目">精选项目</h1>
+                <div class="project-item">
+                    <div class="project-title" data-en="rNetwork" 
+                         data-zh="rNetwork"><a href="https://github.com/rrrrrzy/rNetwork">rNetwork</a></div>
+                    <div class="project-desc" data-en="A network stack based on Rust. Support full progress from ethernet to TCP." 
+                         data-zh="一个基于Rust的网络协议栈，支持从以太网帧到TCP协议全过程。">
+                         一个基于Rust的网络协议栈，支持从以太网帧到TCP协议全过程。
+                    </div>
+                </div>
+                
+                <!-- <div class="project-item">
+                    <div class="project-title" data-en="Natural Language Processing Framework" 
+                         data-zh="自然语言处理框架">自然语言处理框架</div>
+                    <div class="project-desc" data-en="An open-source NLP toolkit supporting multiple languages with advanced text analysis capabilities including sentiment analysis, entity recognition, and semantic understanding." 
+                         data-zh="一个开源的NLP工具包，支持多种语言，具有高级文本分析功能，包括情感分析、实体识别和语义理解。">
+                         一个开源的NLP工具包，支持多种语言，具有高级文本分析功能，包括情感分析、实体识别和语义理解。
+                    </div>
+                </div> -->
+                
+                <!-- <div class="project-item">
+                    <div class="project-title" data-en="Distributed Computing Platform" 
+                         data-zh="分布式计算平台">分布式计算平台</div>
+                    <div class="project-desc" data-en="A scalable distributed system designed for high-performance scientific computing, capable of handling petabyte-scale data processing with fault tolerance and auto-scaling features." 
+                         data-zh="一个为高性能科学计算设计的可扩展分布式系统，能够处理PB级数据，具有容错和自动扩展功能。">
+                         一个为高性能科学计算设计的可扩展分布式系统，能够处理PB级数据，具有容错和自动扩展功能。
+                    </div>
+                </div> -->
+            </section>
         </div>
     </div>
 
     <footer>
-        <p data-en="Copyright &copy; 2023 RenziJerish" data-zh="版权所有 &copy; 2023 RenziJerish">版权所有 &copy; 2023 RenziJerish</p>
+        <div class="container">
+            <p data-en="© 2026 RenziJerish. All rights reserved." data-zh="© 2026 RenziJerish. 保留所有权利。">© 2026 RenziJerish. 保留所有权利。</p>
+        </div>
     </footer>
 </body>
 </html>
