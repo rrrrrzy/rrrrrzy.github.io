@@ -7,16 +7,18 @@
     <meta name="description" content="RenziJerish's Academic Portfolio - Computer Science Research">
     <script>
         function toggleLanguage() {
-            const elements = document.querySelectorAll('[data-en], [data-zh]');
+            const isChinese = document.documentElement.lang === 'zh-CN';
+            const nextLanguage = isChinese ? 'en' : 'zh';
+            const elements = document.querySelectorAll('[data-en][data-zh]');
+
             elements.forEach(element => {
-                const enText = element.getAttribute('data-en');
-                const zhText = element.getAttribute('data-zh');
-                if (element.innerText === enText) {
-                    element.innerText = zhText;
-                } else {
-                    element.innerText = enText;
+                if (element.children.length === 0) {
+                    element.textContent = element.getAttribute(nextLanguage === 'zh' ? 'data-zh' : 'data-en');
                 }
             });
+
+            document.documentElement.lang = nextLanguage === 'zh' ? 'zh-CN' : 'en';
+            document.querySelector('.language-toggle button').textContent = nextLanguage === 'zh' ? 'English' : '中文';
         }
     </script>
     <style>
@@ -86,6 +88,15 @@
             justify-content: center;
             list-style: none;
             gap: 30px;
+        }
+
+        nav li {
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        nav li:before {
+            content: none;
         }
         
         nav a {
@@ -183,6 +194,79 @@
             margin-bottom: 15px;
             border-left: 3px solid #3498db;
         }
+
+        .experience-group {
+            margin-top: 35px;
+        }
+
+        .experience-intro {
+            margin-bottom: 20px;
+            color: #7f8c8d;
+            font-size: 0.95em;
+            letter-spacing: 0.3px;
+        }
+
+        .experience-item {
+            background: #f8f9fa;
+            padding: 18px;
+            margin-bottom: 16px;
+            border-left: 3px solid #95a5a6;
+        }
+
+        .experience-item h3 {
+            font-size: 1.05em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .meta {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .experience-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .award-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .award-entry {
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e9ec;
+        }
+
+        .award-entry:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .award-title {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .award-meta {
+            font-size: 0.88em;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        .two-col h3 {
+            margin-top: 0;
+        }
         
         .paper-title, .project-title {
             font-weight: 500;
@@ -227,6 +311,10 @@
                 text-align: center;
                 margin-bottom: 20px;
             }
+
+            .two-col {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -242,7 +330,7 @@
                 <p class="title" data-en="Computer Science Researcher" data-zh="计算机科学研究者">计算机科学研究者</p>
                 <p class="title" data-en="Northwestern Polytechnical University" data-zh="西北工业大学">西北工业大学</p>
                 <div class="contact-info">
-                    <span data-en="Email: " data-zh="邮箱：">邮箱：</span><a href="renzhiyuan@mail.nwpu.edu.cn">renzhiyuan@mail.nwpu.edu.cn</a>
+                    <span data-en="Email: " data-zh="邮箱：">邮箱：</span><a href="mailto:renzhiyuan@mail.nwpu.edu.cn">renzhiyuan@mail.nwpu.edu.cn</a>
                 </div>
                 <nav>
                     <ul>
@@ -260,9 +348,9 @@
         <div class="main-content">
             <section id="about" class="section">
                 <h1 data-en="About Me" data-zh="关于我">关于我</h1>
-                <p data-en="I am an undergrad student in Computer Science at Northwestern Polytechnical University. My research interests focus on artificial intelligence, machine learning, and software engineering. I am passionate about developing innovative solutions to complex computational problems and contributing to the advancement of computer science." 
-                   data-zh="我是西北工业大学计算机科学专业的研究者。我的研究兴趣集中在人工智能、机器学习和软件工程领域。我致力于为复杂的计算问题开发创新解决方案，并为计算机科学的发展做出贡献。">
-                   我是西北工业大学计算机科学专业的本科生。我的研究兴趣集中在人工智能、机器学习和软件工程领域。我致力于为复杂的计算问题开发创新解决方案，并为计算机科学的发展做出贡献。
+                     <p data-en="I am an undergraduate student majoring in Computer Science at Northwestern Polytechnical University. My research interests focus on artificial intelligence, machine learning, software engineering, and intelligent systems applications. I am committed to combining algorithmic research with engineering implementation, with sustained exploration in education, robotics, and intelligent software systems." 
+                         data-zh="我是西北工业大学计算机科学专业的本科生。我的研究兴趣集中在人工智能、机器学习、软件工程与智能系统应用领域。我致力于将算法研究与工程实现相结合，面向教育、机器人与智能软件系统等场景开展持续探索。">
+                   我是西北工业大学计算机科学专业的本科生。我的研究兴趣集中在人工智能、机器学习、软件工程与智能系统应用领域。我致力于将算法研究与工程实现相结合，面向教育、机器人与智能软件系统等场景开展持续探索。
                 </p>
             </section>
             
@@ -274,12 +362,13 @@
                     <!-- <li data-en="Computer Vision and Image Processing" data-zh="计算机视觉与图像处理">计算机视觉与图像处理</li>
                     <li data-en="Natural Language Processing" data-zh="自然语言处理">自然语言处理</li> -->
                     <li data-en="Software Engineering and System Design" data-zh="软件工程与系统设计">软件工程与系统设计</li>
+                    <li data-en="Robot Software and Intelligent System Control" data-zh="机器人软件与智能系统控制">机器人软件与智能系统控制</li>
                 </ul>
             </section>
             
             <section id="publications" class="section">
                 <h1 data-en="Publications" data-zh="学术论文">学术论文</h1>
-                <p data-en="No public paper temperarily..." data-zh="暂无学术论文发表">暂无学术论文发表</p>
+                <p data-en="No publications available at present." data-zh="暂无学术论文发表">暂无学术论文发表</p>
                 <!-- <div class="paper-item">
                     <div class="paper-title" data-en="[Paper Title 1]: Advanced Machine Learning Approaches for Computer Vision" 
                          data-zh="[论文标题1]：计算机视觉中的高级机器学习方法">[论文标题1]：计算机视觉中的高级机器学习方法</div>
@@ -303,33 +392,182 @@
             </section>
             
             <section id="projects" class="section">
-                <h1 data-en="Selected Projects" data-zh="精选项目">精选项目</h1>
+                <div>
+                    <h1 data-en="Selected Open-Source Projects" data-zh="精选开源项目">精选开源项目</h1>
                 <div class="project-item">
-                    <div class="project-title" data-en="rNetwork" 
-                         data-zh="rNetwork"><a href="https://github.com/rrrrrzy/rNetwork">rNetwork</a></div>
+                    <div class="project-title"><a href="https://github.com/rrrrrzy/rNetwork">rNetwork</a></div>
                     <div class="project-desc" data-en="A network stack based on Rust. Support full progress from ethernet to TCP." 
                          data-zh="一个基于Rust的网络协议栈，支持从以太网帧到TCP协议全过程。">
-                         一个基于Rust的网络协议栈，支持从以太网帧到TCP协议全过程。
+                         一个基于Rust的网络协议栈，支持从以太网帧处理到TCP协议支持全过程。
                     </div>
                 </div>
-                
-                <!-- <div class="project-item">
-                    <div class="project-title" data-en="Natural Language Processing Framework" 
-                         data-zh="自然语言处理框架">自然语言处理框架</div>
-                    <div class="project-desc" data-en="An open-source NLP toolkit supporting multiple languages with advanced text analysis capabilities including sentiment analysis, entity recognition, and semantic understanding." 
-                         data-zh="一个开源的NLP工具包，支持多种语言，具有高级文本分析功能，包括情感分析、实体识别和语义理解。">
-                         一个开源的NLP工具包，支持多种语言，具有高级文本分析功能，包括情感分析、实体识别和语义理解。
+                </div>
+
+                <div class="experience-group">
+                    <h1 data-en="Project Experience" data-zh="项目经历">项目经历</h1>
+                    <div class="experience-intro" data-en="Research Training · Innovation and Entrepreneurship · Engineering Practice" data-zh="科研训练 · 创新创业 · 工程实践">科研训练 · 创新创业 · 工程实践</div>
+                </div>
+
+                <div class="experience-item">
+                    <h3 data-en="MAPLES Lab: Evolution of an Educational Assistant Driven by Student Q&amp;A Feedback" data-zh="MAPLES课题组：基于学生问答反馈的教育助手进化">MAPLES课题组：基于学生问答反馈的教育助手进化</h3>
+                    <p data-en="I joined Professor Yupei Zhang's Machines and Human Learning Sciences (MAPLES) Lab to study the principles and applications of large language models in artificial intelligence. I participated in the project 'Evolution of an Educational Assistant Driven by Student Q&amp;A Feedback,' focusing on intelligent question answering and model optimization in educational settings."
+                       data-zh="加入张育培教授机器与人类学习科学（MAPLES）课题组，学习研究人工智能大语言模型的原理与应用，参与“基于学生问答反馈的教育助手进化”项目，聚焦教育场景中的智能问答与模型优化。">
+                    加入张育培教授机器与人类学习科学（MAPLES）课题组，学习研究人工智能大语言模型的原理与应用，
+                    参与“基于学生问答反馈的教育助手进化”项目，聚焦教育场景中的智能问答与模型优化。
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 data-en="Customized Campus Teaching and Learning Optimization System Based on Large AI Models" data-zh="基于AI大模型的校园教与学优化定制系统">基于AI大模型的校园教与学优化定制系统</h3>
+                    <div class="meta" data-en="Innovation and Entrepreneurship Training Program · Principal Investigator" data-zh="萌创项目 · 主持人">萌创项目 · 主持人</div>
+                    <p data-en="As the principal investigator of an innovation project, I built an application system based on large language models for campus teaching, learning, and daily-life scenarios. I was responsible for overall coordination, requirements analysis, technical roadmap planning, and core development, driving multiple iterations and the deployment of personalized services."
+                       data-zh="作为萌创项目主持人，围绕校园教育教学与生产生活场景，构建大语言模型应用系统。负责项目统筹、需求调研、技术路线规划与核心开发，推动系统多轮迭代与个性化服务落地。">
+                    作为萌创项目主持人，围绕校园教育教学与生产生活场景，构建大语言模型应用系统。
+                    负责项目统筹、需求调研、技术路线规划与核心开发，推动系统多轮迭代与个性化服务落地。
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 data-en="Educational Data Mining System Based on Large AI Models" data-zh="基于AI大模型的教育数据挖掘系统">基于AI大模型的教育数据挖掘系统</h3>
+                    <div class="meta" data-en="National Undergraduate Innovation and Entrepreneurship Training Program · Principal Investigator" data-zh="国家级大学生创新创业训练计划项目 · 主持人">国家级大学生创新创业训练计划项目 · 主持人</div>
+                    <p data-en="Starting from the underlying principles of large models, this project combined RAG, containerized deployment, and fine-tuning to build an educational data mining platform for on-campus scenarios. I took charge of schedule management, technology stack optimization, and core R&amp;D."
+                       data-zh="项目从大模型底层原理出发，结合 RAG、容器化部署与 fine-tuning，构建面向校内场景的教育数据挖掘平台。负责项目进度管理、技术栈优化与核心研发。">
+                    项目从大模型底层原理出发，结合 RAG、容器化部署与 fine-tuning，
+                    构建面向校内场景的教育数据挖掘平台。负责项目进度管理、技术栈优化与核心研发。
+                    </p>
+                    <p>
+                    <strong data-en="Outcomes:" data-zh="成果：">成果：</strong><span data-en="One software copyright registration; release of the foundation model " data-zh="软件著作权 1 项；发布基座模型 ">软件著作权 1 项；发布基座模型 </span><em>maple-v1</em><span data-en="." data-zh="。">。</span>
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 data-en="Research on High-Quality Question Generation Based on Large Models" data-zh="基于大模型的高质量试题生成研究">基于大模型的高质量试题生成研究</h3>
+                    <div class="meta" data-en="Provincial Undergraduate Innovation and Entrepreneurship Training Program · Principal Investigator" data-zh="省级大学生创新创业训练计划项目 · 主持人">省级大学生创新创业训练计划项目 · 主持人</div>
+                    <p data-en="Building on an existing foundation model, this project explored a question-generation mechanism that balanced 'knowledge constraints + generative flexibility' by combining knowledge graphs and reinforcement learning, with the goal of producing an intelligent system for high-quality and format-consistent question generation."
+                       data-zh="依托既有基座模型，结合知识图谱与强化学习等技术，探索“知识约束 + 生成自由”的试题生成机制，构建格式正确、质量可控的智能试题生成系统。">
+                    依托既有基座模型，结合知识图谱与强化学习等技术，探索“知识约束 + 生成自由”的试题生成机制，
+                    构建格式正确、质量可控的智能试题生成系统。
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 data-en="Dance Robot Innovation Practice Base: Basketball Project Team" data-zh="舞蹈机器人创新实践基地：篮球项目组">舞蹈机器人创新实践基地：篮球项目组</h3>
+                    <p data-en="As the leader of the basketball project team, I was responsible for software development and task planning. The team mainly adopted a finite-state-machine approach and used C++, Python, and LabVIEW to develop robotic systems, representing the practice base in multiple national competitions."
+                       data-zh="担任篮球项目组负责人，负责软件层开发与任务安排，主要采用有限状态机方法，使用 C++、Python 与 LabVIEW 进行机器人系统开发，并多次代表基地参加国家级比赛。">
+                    担任篮球项目组负责人，负责软件层开发与任务安排，主要采用有限状态机方法，
+                    使用 C++、Python 与 LabVIEW 进行机器人系统开发，并多次代表基地参加国家级比赛。
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 data-en="FDM Xi'an Slicing Algorithm Development Group: Collaboration on an Industrial Project with the School of Materials" data-zh="FDM·西安 剖分算法开发组 -- 材料学院实业项目协作">FDM·西安 剖分算法开发组 -- 材料学院实业项目协作</h3>
+                    <p data-en="From June 2024 to July 2025, I have participated in work on the analysis and application of CuraEngine slicing algorithms, as well as in-house path-planning algorithms for wide-line extrusion. This experience has steadily strengthened my practice in algorithm engineering and manufacturing software. As a student collaborator in an industrial project team associated with the School of Materials, I have also been involved in interdisciplinary engineering practice centered on computing applications in materials-science scenarios."
+                       data-zh="2024 年 6 月到 2025 年 7 月，参与 CuraEngine 剖分算法的解析与应用，以及自研宽线挤出机路径规划算法相关工作，持续积累算法工程化与制造软件方向的实践经验。以学生身份参与材料学院相关实业项目组，围绕材料科学场景中的计算机技术应用开展协作，参与跨学科工程实践。">
+                    2024 年 6 月到 2025 年 7 月，参与 CuraEngine 剖分算法的解析与应用，以及自研宽线挤出机路径规划算法相关工作，
+                    持续积累算法工程化与制造软件方向的实践经验。以学生身份参与材料学院相关实业项目组，围绕材料科学
+                    场景中的计算机技术应用开展协作，参与跨学科工程实践。
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 data-en="Competitions and Outcomes" data-zh="竞赛及成果">竞赛及成果</h3>
+                    <div class="two-col">
+                        <div>
+                            <h3 data-en="Project Outcomes" data-zh="项目成果">项目成果</h3>
+                            <ul>
+                            <li data-en="One software copyright registration" data-zh="软件著作权 1 项">软件著作权 1 项</li>
+                            <li><span data-en="Release of the education-oriented foundation model " data-zh="发布教育场景基座模型 ">发布教育场景基座模型 </span><em>maple-v1</em></li>
+                            <li data-en="Sustained project experience in large models, educational agents, question generation, and robot software" data-zh="围绕大模型、教育智能体、试题生成与机器人软件形成持续项目积累">围绕大模型、教育智能体、试题生成与机器人软件形成持续项目积累</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 data-en="Awards Timeline" data-zh="竞赛时间线">竞赛时间线</h3>
+                            <div class="award-list">
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="2024 China Robot Competition, Basketball Simulation" data-zh="2024中国机器人大赛-篮球仿真">2024中国机器人大赛-篮球仿真</div>
+                                    <div class="award-meta" data-en="2024/05/19 · National · Second Prize" data-zh="2024/05/19 · 国家级 · 二等奖">2024/05/19 · 国家级 · 二等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="14th Gongda Press Cup, 2024 Edition" data-zh="2024年第十四届“工大出版社杯”">2024年第十四届“工大出版社杯”</div>
+                                    <div class="award-meta" data-en="2024/06/28 · University Level · Third Prize" data-zh="2024/06/28 · 校级 · 三等奖">2024/06/28 · 校级 · 三等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="National Collegiate Computer Systems Capability Competition 2024" data-zh="2024全国大学生计算机系统能力大赛">2024全国大学生计算机系统能力大赛</div>
+                                    <div class="award-meta" data-en="2024/08/26 · National · Third Prize" data-zh="2024/08/26 · 国家级 · 三等奖">2024/08/26 · 国家级 · 三等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="Programming Experiment Competition 2024" data-zh="2024程序设计实验竞赛">2024程序设计实验竞赛</div>
+                                    <div class="award-meta" data-en="2024/08/28 · University Level · Second Prize" data-zh="2024/08/28 · 校级 · 二等奖">2024/08/28 · 校级 · 二等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="National 3D Digital Innovation Design Competition" data-zh="全国三维数字化创新设计大赛">全国三维数字化创新设计大赛</div>
+                                    <div class="award-meta" data-en="2024/10/08 · Provincial · Second Prize" data-zh="2024/10/08 · 省级 · 二等奖">2024/10/08 · 省级 · 二等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="5th Northwestern Polytechnical University Mathematics Competition" data-zh="第五届西北工业大学大学生数学竞赛">第五届西北工业大学大学生数学竞赛</div>
+                                    <div class="award-meta" data-en="2024/10/08 · University Level · Second Prize · Non-Mathematics Track" data-zh="2024/10/08 · 校级 · 二等奖 · 非数学类">2024/10/08 · 校级 · 二等奖 · 非数学类</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="15th National Competition on Market Survey and Analysis, Northwestern Polytechnical University Preliminary" data-zh="第十五届全国大学生市场调查与分析大赛西北工业大学校赛">第十五届全国大学生市场调查与分析大赛西北工业大学校赛</div>
+                                    <div class="award-meta" data-en="2025/03/19 · University Level · Grand Prize" data-zh="2025/03/19 · 校级 · 特等奖">2025/03/19 · 校级 · 特等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="15th National Competition on Market Survey and Analysis, Shaanxi Undergraduate Division" data-zh="第十五届全国大学生市场调查与分析大赛本科组陕西赛区">第十五届全国大学生市场调查与分析大赛本科组陕西赛区</div>
+                                    <div class="award-meta" data-en="2025/04/12 · Provincial · First Prize" data-zh="2025/04/12 · 省级 · 一等奖">2025/04/12 · 省级 · 一等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="15th National Competition on Market Research and Analysis, National Finals" data-zh="第十五届全国市场调研与分析大赛国赛">第十五届全国市场调研与分析大赛国赛</div>
+                                    <div class="award-meta" data-en="2025/04/26 · National · Third Prize" data-zh="2025/04/26 · 国家级 · 三等奖">2025/04/26 · 国家级 · 三等奖</div>
+                                </div>
+                                <!-- <div class="award-entry">
+                                    <div class="award-title" data-en="16th Lanqiao Cup National Software and Information Technology Professionals Competition" data-zh="第十六届蓝桥杯全国软件和信息技术专业人才大赛">第十六届蓝桥杯全国软件和信息技术专业人才大赛</div>
+                                    <div class="award-meta" data-en="2025/04/30 · Provincial · Second Prize" data-zh="2025/04/30 · 省级 · 二等奖">2025/04/30 · 省级 · 二等奖</div>
+                                </div> -->
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="American Mathematical Contest in Modeling 2025" data-zh="2025美国国际大学生数学建模竞赛">2025美国国际大学生数学建模竞赛</div>
+                                    <div class="award-meta" data-en="2025/05/02 · International · First Prize · Meritorious Winner (M Award)" data-zh="2025/05/02 · 国际级 · 一等奖 · M奖">2025/05/02 · 国际级 · 一等奖 · M奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="Northwestern Polytechnical University English Speech Competition 2025" data-zh="2025西北工业大学英语演讲比赛">2025西北工业大学英语演讲比赛</div>
+                                    <div class="award-meta" data-en="2025/05/08 · University Level · Second Prize" data-zh="2025/05/08 · 校级 · 二等奖">2025/05/08 · 校级 · 二等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="21st Century Cup English Speech Competition" data-zh="“21世纪杯”英语演讲比赛">“21世纪杯”英语演讲比赛</div>
+                                    <div class="award-meta" data-en="2025/05/20 · University Level · Third Prize" data-zh="2025/05/20 · 校级 · 三等奖">2025/05/20 · 校级 · 三等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="14th Gongda Press Cup, 2025 Edition" data-zh="2025年第十四届“工大出版社杯”">2025年第十四届“工大出版社杯”</div>
+                                    <div class="award-meta" data-en="2025/05/21 · University Level · Second Prize" data-zh="2025/05/21 · 校级 · 二等奖">2025/05/21 · 校级 · 二等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="4th CCF Quantum Computing Programming Challenge" data-zh="第四届CCF量子计算编程挑战赛">第四届CCF量子计算编程挑战赛</div>
+                                    <div class="award-meta" data-en="2025/05/30 · National · Third Prize · Score: 77/100" data-zh="2025/05/30 · 国家级 · 三等奖 · 满分100，成绩77">2025/05/30 · 国家级 · 三等奖 · 满分100，成绩77</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="China Collegiate Computing Contest 2025, AIGC Innovation Competition" data-zh="2025中国高校计算机大赛-AIGC创新赛">2025中国高校计算机大赛-AIGC创新赛</div>
+                                    <div class="award-meta" data-en="2025/08/10 · Provincial · First Prize" data-zh="2025/08/10 · 省级 · 一等奖">2025/08/10 · 省级 · 一等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="National Collegiate Computer Systems Capability Competition 2025" data-zh="2025全国大学生计算机系统能力大赛">2025全国大学生计算机系统能力大赛</div>
+                                    <div class="award-meta" data-en="2025/08/23 · National · Second Prize" data-zh="2025/08/23 · 国家级 · 二等奖">2025/08/23 · 国家级 · 二等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="China Collegiate Computing Contest 2025, AIGC Innovation Competition" data-zh="2025中国高校计算机大赛-AIGC创新赛">2025中国高校计算机大赛-AIGC创新赛</div>
+                                    <div class="award-meta" data-en="2025/08/25 · National · Third Prize" data-zh="2025/08/25 · 国家级 · 三等奖">2025/08/25 · 国家级 · 三等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="Dynamic AI+ Innovation Contest 2025" data-zh="2025动感AI+创智大赛">2025动感AI+创智大赛</div>
+                                    <div class="award-meta" data-en="2025/12/07 · National · Second Prize" data-zh="2025/12/07 · 国家级 · 二等奖">2025/12/07 · 国家级 · 二等奖</div>
+                                </div>
+                                <div class="award-entry">
+                                    <div class="award-title" data-en="National Computer Systems Capability Competition, Operating Systems Contest (Kernel), Regional Round" data-zh="全国计算机系统能力大赛-操作系统大赛(内核)区域赛">全国计算机系统能力大赛-操作系统大赛(内核)区域赛</div>
+                                    <div class="award-meta" data-en="2026/02/03 · Provincial/Regional · Second Prize" data-zh="2026/02/03 · 省级 · 二等奖">2026/02/03 · 省级 · 二等奖</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div> -->
-                
-                <!-- <div class="project-item">
-                    <div class="project-title" data-en="Distributed Computing Platform" 
-                         data-zh="分布式计算平台">分布式计算平台</div>
-                    <div class="project-desc" data-en="A scalable distributed system designed for high-performance scientific computing, capable of handling petabyte-scale data processing with fault tolerance and auto-scaling features." 
-                         data-zh="一个为高性能科学计算设计的可扩展分布式系统，能够处理PB级数据，具有容错和自动扩展功能。">
-                         一个为高性能科学计算设计的可扩展分布式系统，能够处理PB级数据，具有容错和自动扩展功能。
-                    </div>
-                </div> -->
+                </div>
+
             </section>
         </div>
     </div>
